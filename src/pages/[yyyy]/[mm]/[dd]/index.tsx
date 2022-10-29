@@ -57,7 +57,7 @@ export const DatePage = ({ date, lastfmUserId, song }: Props) => {
            * TODO: OGP を付ける
            */
         }
-        <Seo title={`${date} ― ${song.name}`} description={`${date} の曲は ${song.artist} の ${song.name} でした`} ogp={`https://images.weserv.nl/?url=${song.imageUrl}`} />
+        <Seo title={`${date}: ${song.name} ― ${song.artist}`} description={`${date} の曲は ${song.artist} の ${song.name} でした`} ogp={`https://images.weserv.nl/?url=${song.imageUrl}`} />
         <div className="main">
           <div className="content">
             <h1>📅 {date}</h1>
