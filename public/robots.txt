@@ -2,4 +2,4 @@ User-agent: *
 Disallow: https://images.weserv.nl/
 
 User-agent: Twitterbot
-Disallow:
+Disallow: https://images.weserv.nl/
