@@ -134,6 +134,8 @@ export const Seo: React.FC<{
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@iam_takagi" />
+
+      <meta name="robots" content="noindex,nofollow,noarchive"/>
     </Head>
   );
 };
