@@ -1,10 +1,5 @@
 # lyrics
 
-## Todo
-- OGP を付ける
-- Meta タグをいじる
-- ←前日 翌日→ に行けるナビゲーションを置く
-
 ## Getting Started
 
 ### Environment Variables
