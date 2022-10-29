@@ -12,7 +12,7 @@ SUPABSE_URL=
 SUPABSE_ANON_KEY=
 ```
 
-## Installation
+### Installation
 自力で頑張ってください
 
 ## LICENSE
