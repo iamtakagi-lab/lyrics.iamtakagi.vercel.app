@@ -3,6 +3,7 @@ import { Song } from "../../../../common/types";
 import { database } from "../../../../common/supabase";
 import Head from "next/head";
 import "moment/locale/ja";
+import moment from "moment";
 
 type Props = {
   date: string;
@@ -45,6 +46,9 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 };
 
 export const DatePage = ({ date, lastfmUserId, song }: Props) => {
+  const yesterday = moment(date).add(-1, "days").format("YYYY/MM/DD");
+  const tomorrow = moment(date).add(1, "days").format("YYYY/MM/DD");
+
   return (
     song && (
       <>
@@ -53,14 +57,12 @@ export const DatePage = ({ date, lastfmUserId, song }: Props) => {
            * TODO: OGP を付ける
            */
         }
-        <Seo title={date} description={``} ogImage={``} />
+        <Seo title={`${date} ― ${song.name}`} description={`${date} の曲は ${song.artist} の ${song.name} でした`} ogp={`https://images.weserv.nl/?url=${song.imageUrl}`} />
         <div className="main">
           <div className="content">
             <h1>📅 {date}</h1>
             <div style={{ fontSize: "1.2rem", fontWeight: "500" }}>
-              {song.lyrics[0]} {song.lyrics[1]}
-              <br />
-              {song.lyrics[2]} {song.lyrics[3]}
+              {song.lyrics.join(" ")}
             </div>
             <h2>
               {song.name} ― {song.artist}
@@ -77,6 +79,14 @@ export const DatePage = ({ date, lastfmUserId, song }: Props) => {
               picture-in-picture="true"
               loading="lazy"
             ></iframe>
+            <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '1rem'}}>
+            <a href={`/${yesterday}`}>
+              ←{yesterday}
+            </a>
+            <a href={`/${tomorrow}`}>
+              {tomorrow}→
+            </a>
+            </div>
             <div style={{marginTop: "1rem"}}>
               <a href={`https://www.last.fm/user/${lastfmUserId}`}>
                 🎧 last.fm/@{lastfmUserId}
@@ -93,8 +103,8 @@ export const DatePage = ({ date, lastfmUserId, song }: Props) => {
 export const Seo: React.FC<{
   title: string;
   description: string;
-  ogImage: string;
-}> = ({ title, description, ogImage }) => {
+  ogp: string;
+}> = ({ title, description, ogp }) => {
   return (
     <Head>
       <meta name="referrer" content="origin" />
@@ -109,7 +119,16 @@ export const Seo: React.FC<{
         href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css"
       />
       <link rel="stylesheet" type="text/css" href="/assets/index.css" />
+
       <title>{title}</title>
+      <meta property="og:title" content={title} />
+
+      <meta name="description" content={description} />
+      <meta property="og:description" content={description} />
+
+      <meta property="og:image" content={ogp} />
+      <link rel="preload" as="image" href={ogp}></link>
+
     </Head>
   );
 };
