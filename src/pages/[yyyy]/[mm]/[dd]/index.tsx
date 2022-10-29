@@ -7,8 +7,8 @@ import moment from "moment";
 
 type Props = {
   date: string;
-  lastfmUserId: string;
   song: Song;
+  lastfmUserId: string;
   siteDomain: string;
   twitterId: string;
   error?: {
@@ -41,9 +41,9 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   return {
     props: {
       date,
-      lastfmUserId: process.env.LASTFM_USER_ID ?? "",
       song: data[0],
       siteDomain: process.env.SITE_DOMAIN ?? "",
+      lastfmUserId: process.env.LASTFM_USER_ID ?? "",
       twitterId: process.env.TWITTER_ID ?? "",
     },
   };
