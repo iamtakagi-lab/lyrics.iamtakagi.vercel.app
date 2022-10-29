@@ -1,4 +1,4 @@
-# lyrics
+# lyrics.iamtakagi.vercel.app
 
 ## Getting Started
 
