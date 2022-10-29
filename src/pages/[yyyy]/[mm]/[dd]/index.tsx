@@ -116,6 +116,7 @@ export const Seo: React.FC<{
       <meta name="referrer" content="origin" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
       <meta charSet="UTF-8" />
+      <meta name="robots" content="noindex,nofollow,noarchive"/>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&family=Open+Sans:wght@600;700&display=swap"
