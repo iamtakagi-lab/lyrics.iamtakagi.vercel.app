@@ -9,6 +9,8 @@ type Props = {
   date: string;
   lastfmUserId: string;
   song: Song;
+  siteDomain: string;
+  twitterId: string;
   error?: {
     status: number;
     message: string;
@@ -39,13 +41,15 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   return {
     props: {
       date,
-      lastfmUserId: process.env.LASTFM_USER_ID ?? "iamtakagi",
+      lastfmUserId: process.env.LASTFM_USER_ID ?? "",
       song: data[0],
+      siteDomain: process.env.SITE_DOMAIN ?? "",
+      twitterId: process.env.TWITTER_ID ?? "",
     },
   };
 };
 
-export const DatePage = ({ date, lastfmUserId, song }: Props) => {
+export const DatePage = ({ date, lastfmUserId, song, siteDomain, twitterId }: Props) => {
   const yesterday = moment(date).add(-1, "days").format("YYYY/MM/DD");
   const tomorrow = moment(date).add(1, "days").format("YYYY/MM/DD");
 
@@ -57,7 +61,7 @@ export const DatePage = ({ date, lastfmUserId, song }: Props) => {
            * TODO: OGP を付ける
            */
         }
-        <Seo title={`${date}: ${song.name} ― ${song.artist}`} description={`${date} の曲は ${song.artist} の ${song.name} でした`} ogp={`https://images.weserv.nl/?url=${song.imageUrl}`} />
+        <Seo title={`${date}: ${song.name} ― ${song.artist}`} description={`${date} の曲は ${song.artist} の ${song.name} でした`} ogp={`https://images.weserv.nl/?url=${song.imageUrl}`} siteDomain={siteDomain} twitterId={twitterId} />
         <div className="main">
           <div className="content">
             <h1>📅 {date}</h1>
@@ -104,7 +108,9 @@ export const Seo: React.FC<{
   title: string;
   description: string;
   ogp: string;
-}> = ({ title, description, ogp }) => {
+  siteDomain: string;
+  twitterId: string;
+}> = ({ title, description, ogp, siteDomain, twitterId }) => {
   return (
     <Head>
       <meta name="referrer" content="origin" />
@@ -124,18 +130,16 @@ export const Seo: React.FC<{
       <meta property="og:title" content={title} />
       <meta name="description" content={description} />
       <meta property="og:description" content={description} />
-      <meta property="og:site_name" content="lyrics.iamtakagi.vercel.app" />
+      <meta property="og:site_name" content={siteDomain} />
 
       <link rel="preload" as="image" href={ogp}></link>
 
       <meta property="og:image" content={ogp} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://lyrics.iamtakagi.vercel.app" />
+      <meta property="og:url" content={`https://${siteDomain}`} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@iam_takagi" />
-
-      <meta name="robots" content="noindex,nofollow,noarchive"/>
+      <meta name="twitter:site" content={`@${twitterId}`} />
     </Head>
   );
 };
