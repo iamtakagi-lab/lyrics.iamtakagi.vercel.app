@@ -122,13 +122,18 @@ export const Seo: React.FC<{
 
       <title>{title}</title>
       <meta property="og:title" content={title} />
-
       <meta name="description" content={description} />
       <meta property="og:description" content={description} />
+      <meta property="og:site_name" content="lyrics.iamtakagi.vercel.app" />
 
-      <meta property="og:image" content={ogp} />
       <link rel="preload" as="image" href={ogp}></link>
 
+      <meta property="og:image" content={ogp} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://lyrics.iamtakagi.vercel.app" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@iam_takagi" />
     </Head>
   );
 };
