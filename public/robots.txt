@@ -1,5 +1,5 @@
-User-agent: *
-Disallow: https://images.weserv.nl/
-
 User-agent: Twitterbot
-Disallow: https://images.weserv.nl/
+Disallow: /
+
+User-agent: *
+Disallow: /
