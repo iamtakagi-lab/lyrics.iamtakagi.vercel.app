@@ -12,6 +12,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   };
 };
 
-export const IndexPage = () => {}
+export const IndexPage = () => {};
 
-export default IndexPage
+export default IndexPage;

@@ -20,14 +20,14 @@ type Props = {
 };
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  ctx.res.setHeader("Cache-Control", "public, max-age=31536000, immutable")
+  ctx.res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
 
   const { yyyy, mm, dd } = ctx.query;
   const date = `${yyyy}/${mm}/${dd}`;
 
   // それは本当に日付ですか
   if (isNaN(new Date(date).getDate())) {
-    ctx.res.statusCode = 500
+    ctx.res.statusCode = 500;
     return {
       props: {
         siteDomain: process.env.SITE_DOMAIN ?? "",
@@ -48,7 +48,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     .limit(1)
     .eq("date", date);
   if (!data || !data.length || !data[0] || error) {
-    ctx.res.statusCode = 404
+    ctx.res.statusCode = 404;
     return {
       props: {
         date,
@@ -65,7 +65,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 
   //console.log(data[0]);
-  ctx.res.statusCode = 200
+  ctx.res.statusCode = 200;
   return {
     props: {
       date,
@@ -94,7 +94,7 @@ export const DatePage = ({
         <Seo
           title={`${error.statusCode}: ${error.message}`}
           description={`${error.message}`}
-          ogp={'https://i.imgur.com/l1M6ZDy.jpg'}
+          ogp={"https://i.imgur.com/l1M6ZDy.jpg"}
           siteDomain={siteDomain}
           twitterId={twitterId}
         />
