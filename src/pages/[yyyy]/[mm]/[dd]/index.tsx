@@ -37,7 +37,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     };
   }
 
-  console.log(data[0]);
+  //console.log(data[0]);
   return {
     props: {
       date,
