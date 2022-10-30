@@ -34,7 +34,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
         error: {
           statusCode: 500,
           statusLabel: STATUS_CODES[500],
-          message: "📅 正しい日付を指定してください",
+          message: "正しい日付を指定してください",
         },
       },
     };
@@ -56,7 +56,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
         error: {
           statusCode: 404,
           statusLabel: STATUS_CODES[404],
-          message: `📅 ${date} の歌詞はありません`,
+          message: `${date} の歌詞はありません`,
         },
       },
     };
@@ -101,7 +101,7 @@ export const DatePage = ({
             <h1>
               {error.statusCode}: {error.statusLabel}
             </h1>
-            <h2>{error.message}</h2>
+            <h2>📅 {error.message}</h2>
 
             {date && (
               <div
