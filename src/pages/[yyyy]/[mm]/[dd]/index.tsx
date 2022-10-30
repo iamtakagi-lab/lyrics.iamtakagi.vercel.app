@@ -56,11 +56,6 @@ export const DatePage = ({ date, lastfmUserId, song, siteDomain, twitterId }: Pr
   return (
     song && (
       <>
-        {
-          /**
-           * TODO: OGP を付ける
-           */
-        }
         <Seo title={`${date}: ${song.name} ― ${song.artist}`} description={`${date} の曲は ${song.artist} の ${song.name} でした`} ogp={song.imageUrl} siteDomain={siteDomain} twitterId={twitterId} />
         <div className="main">
           <div className="content">
