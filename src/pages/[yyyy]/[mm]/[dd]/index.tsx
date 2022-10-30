@@ -20,6 +20,8 @@ type Props = {
 };
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  ctx.res.setHeader("Cache-Control", "public, max-age=31536000, immutable")
+
   const { yyyy, mm, dd } = ctx.query;
   const date = `${yyyy}/${mm}/${dd}`;
 
