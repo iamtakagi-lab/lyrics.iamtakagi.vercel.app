@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { Song } from "../../../../common/types";
 import { database } from "../../../../common/supabase";
 import Head from "next/head";
@@ -19,7 +19,7 @@ type Props = {
   };
 };
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
   ctx.res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
 
   const { yyyy, mm, dd } = ctx.query;
