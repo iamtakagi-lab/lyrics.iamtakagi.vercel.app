@@ -119,8 +119,9 @@ export const DatePage = ({
             )}
 
             <div style={{ marginTop: "1rem" }}>
+              🎧{" "}
               <a href={`https://www.last.fm/user/${lastfmUserId}`}>
-                🎧 last.fm/@{lastfmUserId}
+                last.fm/@{lastfmUserId}
               </a>{" "}
               の直近トップトラックから、1日1回ランダムに歌詞をピックアップしています
             </div>
