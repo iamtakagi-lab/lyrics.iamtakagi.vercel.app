@@ -77,6 +77,47 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   };
 };
 
+export const Seo: React.FC<{
+  title: string;
+  description: string;
+  ogp: string;
+  siteDomain: string;
+  twitterId: string;
+}> = ({ title, description, ogp, siteDomain, twitterId }) => {
+  return (
+    <Head>
+      <meta name="referrer" content="origin" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <meta charSet="UTF-8" />
+      <meta name="robots" content="noindex,nofollow,noarchive" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&family=Open+Sans:wght@600;700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css"
+      />
+      <link rel="stylesheet" type="text/css" href="/assets/index.css" />
+
+      <title>{title}</title>
+      <meta property="og:title" content={title} />
+      <meta name="description" content={description} />
+      <meta property="og:description" content={description} />
+      <meta property="og:site_name" content={siteDomain} />
+
+      <link rel="preload" as="image" href={ogp}></link>
+
+      <meta property="og:image" content={ogp} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={`https://${siteDomain}`} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={`@${twitterId}`} />
+    </Head>
+  );
+};
+
 export const DatePage = ({
   date,
   lastfmUserId,
@@ -184,47 +225,6 @@ export const DatePage = ({
         </div>
       </>
     )
-  );
-};
-
-export const Seo: React.FC<{
-  title: string;
-  description: string;
-  ogp: string;
-  siteDomain: string;
-  twitterId: string;
-}> = ({ title, description, ogp, siteDomain, twitterId }) => {
-  return (
-    <Head>
-      <meta name="referrer" content="origin" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <meta charSet="UTF-8" />
-      <meta name="robots" content="noindex,nofollow,noarchive" />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&family=Open+Sans:wght@600;700&display=swap"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css"
-      />
-      <link rel="stylesheet" type="text/css" href="/assets/index.css" />
-
-      <title>{title}</title>
-      <meta property="og:title" content={title} />
-      <meta name="description" content={description} />
-      <meta property="og:description" content={description} />
-      <meta property="og:site_name" content={siteDomain} />
-
-      <link rel="preload" as="image" href={ogp}></link>
-
-      <meta property="og:image" content={ogp} />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={`https://${siteDomain}`} />
-
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content={`@${twitterId}`} />
-    </Head>
   );
 };
 
