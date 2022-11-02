@@ -113,7 +113,7 @@ export const Seo: React.FC<{
       <meta property="og:type" content="website" />
       <meta property="og:url" content={`https://${siteDomain}`} />
 
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={`@${twitterId}`} />
     </Head>
   );
