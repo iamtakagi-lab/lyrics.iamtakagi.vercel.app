@@ -27,15 +27,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSideP
 
   // それは本当に日付ですか
   if (isNaN(new Date(date).getDate())) {
-    ctx.res.statusCode = 500;
+    ctx.res.statusCode = 400;
     return {
       props: {
         siteDomain: process.env.SITE_DOMAIN ?? "",
         lastfmUserId: process.env.LASTFM_USER_ID ?? "",
         twitterId: process.env.TWITTER_ID ?? "",
         error: {
-          statusCode: 500,
-          statusLabel: STATUS_CODES[500],
+          statusCode: 400,
+          statusLabel: STATUS_CODES[400],
           message: "正しい日付を指定してください",
         },
       },
