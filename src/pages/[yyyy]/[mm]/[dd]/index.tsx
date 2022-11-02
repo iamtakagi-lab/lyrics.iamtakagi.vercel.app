@@ -99,7 +99,6 @@ export const Seo: React.FC<{
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.4.1/dist/css/yakuhanjp.min.css"
       />
-      <link rel="stylesheet" type="text/css" href="/assets/index.css" />
 
       <title>{title}</title>
       <meta property="og:title" content={title} />
