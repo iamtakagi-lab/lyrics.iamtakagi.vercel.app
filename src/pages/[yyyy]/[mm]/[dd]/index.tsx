@@ -195,7 +195,7 @@ export const DatePage = ({
             </h2>
             <iframe
               style={{ borderRadius: "12px" }}
-              src={`https://open.spotify.com/embed/track/${song?.spotifyId}`}
+              src={`https://open.spotify.com/embed/track/${song.spotifyId}`}
               width="100%"
               height="352"
               frameBorder="0"
