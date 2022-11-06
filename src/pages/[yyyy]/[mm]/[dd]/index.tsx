@@ -219,7 +219,7 @@ export const DatePage = ({
               <a href={`https://www.last.fm/user/${lastfmUserId}`}>
                 🎧 last.fm/@{lastfmUserId}
               </a>{" "}
-              の直近トップトラックから、1日1回ランダムに歌詞をピックアップしています
+              の直近1週間トップトラックから1日1回ランダムに歌詞をピックアップしています
             </div>
           </div>
         </div>
